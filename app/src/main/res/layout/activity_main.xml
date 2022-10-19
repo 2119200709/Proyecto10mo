@@ -4,15 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/fondo_degradado"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <FrameLayout
+        android:layout_width="370dp"
+        android:layout_height="600dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/shadow"
+        android:elevation="10dp"
+        android:padding="10dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:alpha="0.85">
+
+        <TextView
+            android:id="@+id/gTituloLogin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="200dp"
+            android:text="@string/app_proyecto"
+            android:textStyle="bold"
+            android:textColor="#000"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/inicioSesion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="-25dp"
+            android:text="Iniciar Sesión"
+            android:textAlignment="center"
+            android:textColor="@color/colorUno"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/edtUser"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            android:background="@drawable/rounded_gray"
+            android:ems="10"
+            android:hint="Email"
+            android:inputType="textPersonName"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#454545"
+            android:textSize="16sp" />
+        <EditText
+            android:id="@+id/edtPass"
+            android:layout_width="250dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="100dp"
+            android:background="@drawable/rounded_gray"
+            android:ems="10"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textColorHint="#454545"
+            android:textSize="16sp" />
+
+        <Button
+            android:id="@+id/btnLogin"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="200dp"
+            android:background="@drawable/rounded_blue"
+            android:text="Iniciar sesión"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
