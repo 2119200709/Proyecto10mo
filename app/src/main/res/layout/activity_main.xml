@@ -18,34 +18,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:alpha="0.85">
-
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="184dp"
+            android:layout_height="189dp"
+            android:layout_gravity="center_horizontal|top"
+            android:layout_marginTop="25dp"
+            app:srcCompat="@drawable/logo" />
         <TextView
             android:id="@+id/gTituloLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="250dp"
             android:text="@string/app_proyecto"
             android:textStyle="bold"
-            android:textColor="#000"
+            android:textColor="@color/azul"
             android:textSize="18sp" />
         <TextView
             android:id="@+id/inicioSesion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="-25dp"
+            android:layout_marginTop="25dp"
             android:text="Iniciar Sesión"
             android:textAlignment="center"
-            android:textColor="@color/colorUno"
+            android:textColor="@color/gris_oscuro"
             android:textSize="30sp" />
 
         <EditText
-            android:id="@+id/edtUser"
+            android:id="@+id/edtEmail"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="100dp"
             android:background="@drawable/rounded_gray"
             android:ems="10"
             android:hint="Email"
@@ -53,13 +59,14 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#454545"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:alpha=".75"/>
         <EditText
             android:id="@+id/edtPass"
             android:layout_width="250dp"
             android:layout_height="35dp"
             android:layout_gravity="center"
-            android:layout_marginTop="100dp"
+            android:layout_marginTop="150dp"
             android:background="@drawable/rounded_gray"
             android:ems="10"
             android:hint="Password"
@@ -67,18 +74,21 @@
             android:textAlignment="center"
             android:textColor="#000000"
             android:textColorHint="#454545"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:alpha=".75"/>
 
         <Button
             android:id="@+id/btnLogin"
             android:layout_width="250dp"
             android:layout_height="50dp"
             android:layout_gravity="center"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="225dp"
             android:background="@drawable/rounded_blue"
+            android:onClick="iniciarSesión"
             android:text="Iniciar sesión"
             android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:elevation="10dp"/>
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

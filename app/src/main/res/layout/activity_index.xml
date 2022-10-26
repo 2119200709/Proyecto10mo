@@ -17,6 +17,21 @@
         android:textColor="#FFF"
         android:textSize="20sp"
         android:textAlignment="center" />
+
+    <ImageButton
+        android:id="@+id/imgBtn"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="clip_horizontal"
+        android:layout_marginTop="32dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.908"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu" />
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
