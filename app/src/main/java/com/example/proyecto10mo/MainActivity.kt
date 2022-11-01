@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity() {
 
         //Validación de Email y Contraseña
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pass)) {
-            Toast.makeText(this, "Usuario y Contraseña son obligatorios", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Email y Contraseña son obligatorios", Toast.LENGTH_SHORT).show()
         } else {
             login();
         }

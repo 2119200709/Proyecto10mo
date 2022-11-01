@@ -9,7 +9,7 @@ import android.widget.FrameLayout
 import android.widget.ImageButton
 import android.widget.Toast
 
-class IndexActivity : AppCompatActivity() {
+class BoletosActivity : AppCompatActivity() {
 
     // Declaramos las variables de los campos
     /**Componentes del Menu**/
@@ -25,7 +25,7 @@ class IndexActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_index)
+        setContentView(R.layout.activity_boletos)
         /**IDs Menu**/
         btnMenu = findViewById(R.id.imgBtn)
         btnInicio = findViewById(R.id.inicio)

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_degradado"
-    tools:context=".IndexActivity">
+    tools:context=".PerfilActivity">
     <TextView
         android:id="@+id/gUser"
         android:layout_width="match_parent"
@@ -110,10 +110,18 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="20dp"
-            android:text="Bienvenido"
+            android:text="Mi perfil"
             android:textStyle="bold"
             android:textColor="@color/azul"
             android:textSize="20sp" />
+
+        <ImageView
+            android:id="@+id/imgGen"
+            android:layout_marginTop="80dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center|top"
+            app:srcCompat="@drawable/userfake" />
     </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
