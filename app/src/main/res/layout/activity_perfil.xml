@@ -105,7 +105,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:alpha="0.85">
         <TextView
-            android:id="@+id/gTituloLogin"
+            android:id="@+id/gTituloPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
@@ -114,7 +114,26 @@
             android:textStyle="bold"
             android:textColor="@color/azul"
             android:textSize="20sp" />
-
+        <TextView
+            android:id="@+id/gInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="200dp"
+            android:text="Información"
+            android:textStyle="bold"
+            android:textColor="@color/azul"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/gInfo2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="240dp"
+            android:text="Información"
+            android:textStyle="normal"
+            android:textColor="@color/dark"
+            android:textSize="18sp" />
         <ImageView
             android:id="@+id/imgGen"
             android:layout_marginTop="80dp"
