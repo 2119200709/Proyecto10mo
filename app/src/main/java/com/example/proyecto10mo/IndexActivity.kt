@@ -4,14 +4,16 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
+import com.example.proyecto10mo.modelos.Usuarios
+import java.io.Serializable
+import java.util.*
 
 class IndexActivity : AppCompatActivity() {
 
     // Declaramos las variables de los campos
+    /**Cabecera**/
+    lateinit var gUser : TextView
     /**Componentes del Menu**/
     // ImageButton
     lateinit var btnMenu : ImageButton
@@ -26,6 +28,12 @@ class IndexActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_index)
+        val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
+        /**Cabecera**/
+        gUser = findViewById(R.id.gUser)
+
+        gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
+
         /**IDs Menu**/
         btnMenu = findViewById(R.id.imgBtn)
         btnInicio = findViewById(R.id.inicio)
