@@ -17,7 +17,19 @@
         android:textColor="@color/blanco"
         android:textSize="20sp"
         android:textAlignment="center" />
-
+    <ImageView
+        android:id="@+id/Logo"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="clip_horizontal"
+        android:layout_marginTop="25dp"
+        android:background="#00FFFFFF"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/logo" />
     <ImageButton
         android:id="@+id/imgBtn"
         android:layout_width="30dp"

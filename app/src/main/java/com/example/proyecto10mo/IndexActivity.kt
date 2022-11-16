@@ -59,24 +59,20 @@ class IndexActivity : AppCompatActivity() {
         }
         /**Perfil**/
         btnPerfil.setOnClickListener{
-            val intent = Intent(this, PerfilActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, PerfilActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Boletos**/
         btnBoletos.setOnClickListener{
-            val intent = Intent(this, BoletosActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, BoletosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Cerrar Sesión**/
         btnCerrarSesion.setOnClickListener{
             Toast.makeText(this, "Cerrando Sesión", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }

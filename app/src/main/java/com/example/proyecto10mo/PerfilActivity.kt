@@ -4,14 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.FrameLayout
-import android.widget.ImageButton
-import android.widget.Toast
+import android.widget.*
+import com.example.proyecto10mo.modelos.Usuarios
+import java.io.Serializable
 
 class PerfilActivity : AppCompatActivity() {
 
     // Declaramos las variables de los campos
+    /**Cabecera**/
+    lateinit var gUser : TextView
     /**Componentes del Menu**/
     // ImageButton
     lateinit var btnMenu : ImageButton
@@ -23,9 +24,23 @@ class PerfilActivity : AppCompatActivity() {
     // FrameLayout
     lateinit var menu : FrameLayout
 
+    /**Perfil**/
+    lateinit var gInfo : TextView
+    lateinit var gInfo2 : TextView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_perfil)
+
+        val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
+        /**Cabecera**/
+        gUser = findViewById(R.id.gUser)
+        gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
+        /**Perfil**/
+        gInfo = findViewById(R.id.gInfo)
+        gInfo2 = findViewById(R.id.gInfo2)
+        gInfo.setText(usuario.nombre.toString()+" "+usuario.apellido.toString())
+        gInfo2.setText("Email "+usuario.email.toString()+"\nEventos (0)")
         /**IDs Menu**/
         btnMenu = findViewById(R.id.imgBtn)
         btnInicio = findViewById(R.id.inicio)
@@ -45,31 +60,26 @@ class PerfilActivity : AppCompatActivity() {
         }
         /**Inicio**/
         btnInicio.setOnClickListener{
-            val intent = Intent(this, IndexActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, IndexActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Perfil**/
         btnPerfil.setOnClickListener{
-            val intent = Intent(this, PerfilActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, PerfilActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Boletos**/
         btnBoletos.setOnClickListener{
-            val intent = Intent(this, BoletosActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, BoletosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Cerrar Sesión**/
         btnCerrarSesion.setOnClickListener{
             Toast.makeText(this, "Cerrando Sesión", Toast.LENGTH_SHORT).show()
-            val intent = Intent(this, MainActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
     }
