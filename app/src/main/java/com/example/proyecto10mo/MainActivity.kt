@@ -18,7 +18,7 @@ import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
 
-    val url = "http://172.16.100.79:8080/";
+    val url = "http://192.168.1.8:8080/"
 
     // Declaramos las variables de los campos
     lateinit var edtEmail : EditText
@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
                     }
 
                 } else {
-                    println("error")
+                    Toast.makeText(baseContext, "Sin Conexión a la base de datos", Toast.LENGTH_SHORT).show()
                 }
             }
         }

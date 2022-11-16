@@ -53,9 +53,8 @@ class IndexActivity : AppCompatActivity() {
         }
         /**Inicio**/
         btnInicio.setOnClickListener{
-            val intent = Intent(this, IndexActivity::class.java).apply {
-                //putExtra(email, pass)
-            }
+            val intent = Intent(this, IndexActivity::class.java)
+                intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Perfil**/
