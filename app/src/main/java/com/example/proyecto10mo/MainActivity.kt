@@ -7,8 +7,10 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.EditText
 import android.widget.Toast
+import com.example.proyecto10mo.databinding.ActivityMainBinding
 import com.example.proyecto10mo.interfaces.APIService
 import com.example.proyecto10mo.modelos.Usuarios
+import com.example.proyecto10mo.objects.VariablesGlobales
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -18,24 +20,20 @@ import java.io.Serializable
 
 class MainActivity : AppCompatActivity() {
 
-    val url = "http://192.168.1.8:8080/"
-
-    // Declaramos las variables de los campos
-    lateinit var edtEmail : EditText
-    lateinit var edtPass : EditText
+    // Binding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
 
     /** Se llama cuando el usuario presiona el botón enviar **/
     fun iniciarSesión(view: View) {
-        val edtEmail = findViewById<EditText>(R.id.edtEmail)
-        val edtPass = findViewById<EditText>(R.id.edtPass)
 
-        val email = edtEmail.text.toString()
-        val password = edtPass.text.toString()
+        val email = binding.edtEmail.text.toString()
+        val password = binding.edtPass.text.toString()
 
         //Validación de Email y Contraseña
         if (TextUtils.isEmpty(email) || TextUtils.isEmpty(password)) {
@@ -47,7 +45,7 @@ class MainActivity : AppCompatActivity() {
 
     fun getRetrofit(): Retrofit{
         return Retrofit.Builder()
-            .baseUrl(url)
+            .baseUrl(VariablesGlobales.url)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }
@@ -76,9 +74,17 @@ class MainActivity : AppCompatActivity() {
 
     fun irAIndex(usuario: Usuarios) {
 
-        Toast.makeText(this, "Logueado Correctamente", Toast.LENGTH_SHORT).show()
-        val intent = Intent(this, IndexActivity::class.java)
+        if (usuario.admin ==1) {
+            Toast.makeText(this, "Logueado Correctamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IndexAdminActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
-        startActivity(intent)
+            startActivity(intent)
+        } else {
+            Toast.makeText(this, "Logueado Correctamente", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this, IndexActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+
     }
 }

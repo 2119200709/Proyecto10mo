@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_degradado"
-    tools:context=".BoletosActivity">
+    tools:context=".RestaurantesActivity">
     <TextView
         android:id="@+id/gUser"
         android:layout_width="match_parent"
@@ -63,7 +63,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center|top"
             android:background="@color/azul"
-            android:text="Ir al Menú"
+            android:text="Ir al Inicio"
             android:textColor="@color/blanco"
             android:textSize="16sp"
             android:textAllCaps="false"/>
@@ -79,13 +79,35 @@
             android:textSize="16sp"
             android:textAllCaps="false"/>
         <Button
-            android:id="@+id/boletos"
+            android:id="@+id/restaurantes"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center|top"
             android:layout_marginTop="80dp"
             android:background="@color/azul"
-            android:text="Mis Boletos"
+            android:text="Restaurantes"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/eventos"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="120dp"
+            android:background="@color/azul"
+            android:text="Eventos"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/usuarios"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="160dp"
+            android:background="@color/azul"
+            android:text="Usuarios"
             android:textColor="@color/blanco"
             android:textSize="16sp"
             android:textAllCaps="false"/>
@@ -94,7 +116,7 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="200dp"
             android:background="@color/azul"
             android:text="Cerrar Sesión"
             android:textColor="@color/blanco"
@@ -122,7 +144,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="20dp"
-            android:text="Mis Boletos"
+            android:text="Restaurantes"
             android:textStyle="bold"
             android:textColor="@color/azul"
             android:textSize="20sp" />
@@ -143,7 +165,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="30dp"
-                android:text="Proximos Eventos"
+                android:text="Restaurantes Registrados"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="18sp"
@@ -165,7 +187,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="90dp"
-                android:text="Seleccione el evento de la lista para poder acceder a su código de acceso"
+                android:text="Seleccione un restaurante de la lista para visualizar su descripción"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="16sp"

@@ -5,26 +5,24 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import com.example.proyecto10mo.databinding.ActivityPerfilBinding
+import com.example.proyecto10mo.databinding.ActivityIndexAdminBinding
+import com.example.proyecto10mo.databinding.ActivityRestaurantesBinding
 import com.example.proyecto10mo.modelos.Usuarios
 import java.io.Serializable
 
-class PerfilActivity : AppCompatActivity() {
+class RestaurantesActivity : AppCompatActivity() {
 
     // Binding
-    lateinit var binding: ActivityPerfilBinding
+    lateinit var binding: ActivityRestaurantesBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPerfilBinding.inflate(layoutInflater)
+        binding = ActivityRestaurantesBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
         /**Cabecera**/
         binding.gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
-        /**Perfil**/
-        binding.gInfo.setText(usuario.nombre.toString()+" "+usuario.apellido.toString())
-        binding.gInfo2.setText("Email: "+usuario.email.toString()+"\nEventos (0)")
 
         /**Funciones del Menu**/
         binding.imgBtn.setOnClickListener{
@@ -47,9 +45,15 @@ class PerfilActivity : AppCompatActivity() {
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
-        /**Boletos**/
-        binding.boletos.setOnClickListener{
+        /**Eventos**/
+        binding.eventos.setOnClickListener{
             val intent = Intent(this, BoletosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+        /**Restaurantes**/
+        binding.restaurantes.setOnClickListener{
+            val intent = Intent(this, RestaurantesActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }

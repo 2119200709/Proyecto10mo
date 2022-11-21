@@ -5,72 +5,53 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
+import com.example.proyecto10mo.databinding.ActivityIndexBinding
 import com.example.proyecto10mo.modelos.Usuarios
 import java.io.Serializable
 import java.util.*
 
 class IndexActivity : AppCompatActivity() {
 
-    // Declaramos las variables de los campos
-    /**Cabecera**/
-    lateinit var gUser : TextView
-    /**Componentes del Menu**/
-    // ImageButton
-    lateinit var btnMenu : ImageButton
-    // Botones
-    lateinit var btnInicio : Button
-    lateinit var btnPerfil : Button
-    lateinit var btnBoletos : Button
-    lateinit var btnCerrarSesion : Button
-    // FrameLayout
-    lateinit var menu : FrameLayout
+    // Binding
+    lateinit var binding: ActivityIndexBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_index)
+        binding = ActivityIndexBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
         /**Cabecera**/
-        gUser = findViewById(R.id.gUser)
-
-        gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
-
-        /**IDs Menu**/
-        btnMenu = findViewById(R.id.imgBtn)
-        btnInicio = findViewById(R.id.inicio)
-        btnPerfil = findViewById(R.id.perfil)
-        btnBoletos = findViewById(R.id.boletos)
-        menu = findViewById(R.id.menu)
-        btnCerrarSesion = findViewById(R.id.cerrarSesion)
-
+        binding.gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
         /**Funciones del Menu**/
-        btnMenu.setOnClickListener{
+        binding.imgBtn.setOnClickListener{
             //menu.visibility = View.VISIBLE
-            if (menu.visibility == View.VISIBLE) {
-                menu.visibility = View.INVISIBLE
+            if (binding.menu.visibility == View.VISIBLE) {
+                binding.menu.visibility = View.INVISIBLE
             } else {
-                menu.visibility = View.VISIBLE
+                binding.menu.visibility = View.VISIBLE
             }
         }
         /**Inicio**/
-        btnInicio.setOnClickListener{
+        binding.inicio.setOnClickListener{
             val intent = Intent(this, IndexActivity::class.java)
                 intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Perfil**/
-        btnPerfil.setOnClickListener{
+        binding.perfil.setOnClickListener{
             val intent = Intent(this, PerfilActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Boletos**/
-        btnBoletos.setOnClickListener{
+        binding.boletos.setOnClickListener{
             val intent = Intent(this, BoletosActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Cerrar Sesión**/
-        btnCerrarSesion.setOnClickListener{
+        binding.cerrarSesion.setOnClickListener{
             Toast.makeText(this, "Cerrando Sesión", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)

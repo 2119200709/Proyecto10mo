@@ -19,6 +19,15 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".RestaurantesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IndexAdminActivity"
+            android:exported="false" />
+        <activity
+            android:name=".IndexCliActivity"
+            android:exported="false" />
+        <activity
             android:name=".BoletosActivity"
             android:exported="false" />
         <activity

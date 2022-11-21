@@ -138,13 +138,23 @@
             android:textColor="@color/azul"
             android:textSize="20sp"
             android:textStyle="bold" />
-
+        <TextView
+            android:id="@+id/gRol"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="240dp"
+            android:text="Cliente"
+            android:textAlignment="center"
+            android:textColor="@color/dark"
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/gInfo2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center|top"
-            android:layout_marginTop="240dp"
+            android:layout_marginTop="280dp"
             android:text="Información"
             android:textAlignment="center"
             android:textColor="@color/dark"
