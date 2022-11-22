@@ -187,21 +187,29 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center|top"
                 android:layout_marginTop="90dp"
-                android:text="Seleccione un restaurante de la lista para visualizar su descripción"
+                android:text="Busca un restaurante de la lista para visualizar su información"
                 android:textAlignment="center"
                 android:textColor="#000"
                 android:textSize="16sp"
                 android:textStyle="normal" />
-            <ListView
-                android:id="@+id/lstClientes"
-                android:layout_width="300dp"
-                android:layout_height="210dp"
-                android:layout_gravity="center|top"
-                android:layout_marginTop="150dp"
-                android:layout_weight="80"
-                android:elevation="10dp"
+
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_bias="0"
+                android:layout_marginTop="140dp"
+                android:layout_marginHorizontal="10dp"
                 android:background="@drawable/rounded_blue_gradient"
-                android:orientation="vertical" />
+                 />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="200dp"
+                android:layout_marginHorizontal="10dp"
+                app:layout_constraintTop_toBottomOf="@id/sv"
+                android:background="@drawable/rounded_blue_gradient"/>
         </FrameLayout>
     </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
