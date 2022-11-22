@@ -3,9 +3,11 @@ package com.example.proyecto10mo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import com.example.proyecto10mo.databinding.ActivityVerRestaurantBinding
 import com.example.proyecto10mo.interfaces.APIService
+import com.example.proyecto10mo.modelos.ResponseStatus
 import com.example.proyecto10mo.modelos.Restaurantes
 import com.example.proyecto10mo.objects.VariablesGlobales
 import kotlinx.coroutines.CoroutineScope
@@ -23,12 +25,27 @@ class VerRestaurant : AppCompatActivity() {
         binding = ActivityVerRestaurantBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.editar.setOnClickListener{
+            //menu.visibility = View.VISIBLE
+            if (binding.editarFrame.visibility == View.VISIBLE) {
+                binding.editarFrame.visibility = View.INVISIBLE
+            } else {
+                binding.editarFrame.visibility = View.VISIBLE
+            }
+        }
+
+        binding.eliminar.setOnClickListener{
+            binding.modalDelete.visibility = View.VISIBLE
+        }
+
+        binding.btnNo.setOnClickListener{
+            binding.modalDelete.visibility = View.INVISIBLE
+        }
+
         val restaurantNombre : String? = intent.getStringExtra("restaurantNombre")
         val restaurantSucursal : String? = intent.getStringExtra("restaurantSucursal")
         val restaurantDomicilio : String? = intent.getStringExtra("restaurantDomicilio")
         val restaurantID : String? = intent.getStringExtra("restaurantID")
-
-        println(restaurantID)
 
         binding.nombre.text = "Nombre: $restaurantNombre"
         binding.sucursal.text = "Sucursal: $restaurantSucursal"
@@ -38,6 +55,8 @@ class VerRestaurant : AppCompatActivity() {
         binding.edtSucursal.setText(restaurantSucursal)
         binding.edtDomicilio.setText(restaurantDomicilio)
 
+        binding.txtEliminarInfo.text = restaurantNombre
+
         binding.guardar.setOnClickListener {
             val nombre = binding.edtNombre.text.toString()
             val sucursal = binding.edtSucursal.text.toString()
@@ -46,6 +65,24 @@ class VerRestaurant : AppCompatActivity() {
 
             guardar(nombre, sucursal, domicilio, idRestaurant)
             //onBackPressed()
+        }
+
+        binding.btnSi.setOnClickListener {
+
+            CoroutineScope(Dispatchers.IO).launch {
+                val call = getRetrofit().create(APIService::class.java).eliminarRestaurant("eliminarrestaurant/$restaurantID")
+                val responseStatus: ResponseStatus? = call.body()
+
+                runOnUiThread {
+                    if (call.isSuccessful) {
+                        binding.modalDelete.visibility = View.INVISIBLE
+                        Toast.makeText(baseContext, "Restaurante Eliminado", Toast.LENGTH_SHORT).show()
+                        finish()
+                    } else {
+                        Toast.makeText(baseContext, "Algo salió mal, intente más tarde", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
