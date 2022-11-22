@@ -20,13 +20,20 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
 import androidx.appcompat.widget.SearchView.OnQueryTextListener
 import androidx.recyclerview.widget.LinearLayoutManager
+import kotlinx.android.synthetic.main.activity_index_admin.*
 
 class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
 
     // Binding
     lateinit var binding: ActivityRestaurantesBinding
+
     lateinit var adapter: RestaurantAdapter
     lateinit var restaurantesList : ArrayList<Restaurantes>
+
+    override fun onResume() {
+        super.onResume()
+        searchByName("")
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -80,10 +87,6 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
         }
     }
 
-    public fun irAVista(){
-
-    }
-
     private fun getRetrofit():Retrofit {
         return Retrofit.Builder()
             .baseUrl(VariablesGlobales.url)
@@ -101,6 +104,7 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
                 if (call.isSuccessful) {
                     if (restaurants != null) {
                         restaurantesList = restaurants
+                        binding.txtSize.text = restaurantesList.size.toString()
                     }
                     adapter = RestaurantAdapter(restaurantesList)
                     binding.rv.layoutManager = LinearLayoutManager(baseContext)
