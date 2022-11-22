@@ -16,5 +16,5 @@ interface APIService {
         suspend fun login(@Field("email") email: String, @Field("password") password: String):Response<Usuarios>
 
         @GET
-        suspend fun getRestaurantes(@Url url: String): Response<List<Restaurantes>>
+        suspend fun getRestaurantes(@Url url: String): Response<ArrayList<Restaurantes>>
 }

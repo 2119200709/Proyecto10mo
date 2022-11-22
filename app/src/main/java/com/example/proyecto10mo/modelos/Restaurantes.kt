@@ -8,7 +8,7 @@ data class Restaurantes(
     @SerializedName("nombre") var nombre: String,
     @SerializedName("sucursal") var sucursal: String,
     @SerializedName("domicilio") var domicilio: String,
-    @SerializedName("imagen") var password: String,
-    @SerializedName("tags") var confirmado: String,
+    @SerializedName("imagen") var imagen: String,
+    @SerializedName("tags") var tags: String,
     @SerializedName("redes") var redes: String,
 ): Serializable

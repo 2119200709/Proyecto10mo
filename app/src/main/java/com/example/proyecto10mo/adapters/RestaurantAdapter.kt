@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.proyecto10mo.R
 import com.example.proyecto10mo.modelos.Restaurantes
 
-class RestaurantAdapter(private val restaurantes: MutableList<String>):
+class RestaurantAdapter(private val restaurantes: ArrayList<Restaurantes>):
     RecyclerView.Adapter<RestaurantViewHolder>() {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RestaurantViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -14,8 +14,7 @@ class RestaurantAdapter(private val restaurantes: MutableList<String>):
     }
 
     override fun onBindViewHolder(holder: RestaurantViewHolder, position: Int) {
-        val item: String = restaurantes[position]
-        holder.bind(item)
+        holder.bind(restaurantes[position])
     }
 
     override fun getItemCount(): Int = restaurantes.size

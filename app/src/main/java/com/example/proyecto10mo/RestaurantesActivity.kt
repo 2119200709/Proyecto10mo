@@ -26,15 +26,14 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
     // Binding
     lateinit var binding: ActivityRestaurantesBinding
     lateinit var adapter: RestaurantAdapter
-    private val restaurantesList = mutableListOf<String>()
+    lateinit var restaurantesList : ArrayList<Restaurantes>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRestaurantesBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.sv.setOnQueryTextListener(this)
-        println("Hola")
-        initRecyclerView()
+
         searchByName("")
         val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
         /**Cabecera**/
@@ -81,11 +80,8 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
         }
     }
 
-    private fun initRecyclerView() {
-        print("me ejecuto")
-        adapter = RestaurantAdapter(restaurantesList)
-        binding.rv.layoutManager = LinearLayoutManager(this)
-        binding.rv.adapter = adapter
+    public fun irAVista(){
+
     }
 
     private fun getRetrofit():Retrofit {
@@ -96,18 +92,19 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
     }
 
     private fun searchByName(query: String?) {
+
         CoroutineScope(Dispatchers.IO).launch {
-            val call: Response<List<Restaurantes>> = getRetrofit().create(APIService::class.java).getRestaurantes("restaurantes/$query")
-            val restaurants: List<Restaurantes>? = call.body()
+            val call: Response<ArrayList<Restaurantes>> = getRetrofit().create(APIService::class.java).getRestaurantes("restaurantes/$query")
+            val restaurants: ArrayList<Restaurantes>? = call.body()
+
             runOnUiThread {
-
                 if (call.isSuccessful) {
-                    val restaurantes: List<String>? = restaurants?.map { "Nombre: "+it.nombre+"\nSucursal: "+it.sucursal+"\nDomicilio: "+it.domicilio }
-
-                    restaurantesList.clear()
-                    if (restaurantes != null) {
-                        restaurantesList.addAll(restaurantes)
+                    if (restaurants != null) {
+                        restaurantesList = restaurants
                     }
+                    adapter = RestaurantAdapter(restaurantesList)
+                    binding.rv.layoutManager = LinearLayoutManager(baseContext)
+                    binding.rv.adapter = adapter
                     adapter.notifyDataSetChanged()
                 } else {
                     Toast.makeText(baseContext, "Algo salió mal", Toast.LENGTH_SHORT).show()
