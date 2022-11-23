@@ -47,7 +47,7 @@ class IndexAdminActivity : AppCompatActivity() {
         }
         /**Eventos**/
         binding.eventos.setOnClickListener{
-            val intent = Intent(this, BoletosActivity::class.java)
+            val intent = Intent(this, EventosActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }

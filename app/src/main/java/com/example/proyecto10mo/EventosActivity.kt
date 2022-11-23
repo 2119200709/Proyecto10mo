@@ -4,10 +4,14 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
+import android.widget.Toast
+import com.example.proyecto10mo.databinding.ActivityEventosBinding
+import androidx.appcompat.widget.SearchView.OnQueryTextListener
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.proyecto10mo.adapters.EventoAdapter
 import com.example.proyecto10mo.adapters.RestaurantAdapter
-import com.example.proyecto10mo.databinding.ActivityRestaurantesBinding
 import com.example.proyecto10mo.interfaces.APIService
+import com.example.proyecto10mo.modelos.Eventos
 import com.example.proyecto10mo.modelos.Restaurantes
 import com.example.proyecto10mo.modelos.Usuarios
 import com.example.proyecto10mo.objects.VariablesGlobales
@@ -18,17 +22,13 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.Serializable
-import androidx.appcompat.widget.SearchView.OnQueryTextListener
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_index_admin.*
 
-class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
+class EventosActivity : AppCompatActivity(), OnQueryTextListener {
 
     // Binding
-    lateinit var binding: ActivityRestaurantesBinding
-
-    lateinit var adapter: RestaurantAdapter
-    lateinit var restaurantesList : ArrayList<Restaurantes>
+    lateinit var binding : ActivityEventosBinding
+    lateinit var adapter: EventoAdapter
+    lateinit var eventosList: ArrayList<Eventos>
 
     override fun onResume() {
         super.onResume()
@@ -37,7 +37,7 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityRestaurantesBinding.inflate(layoutInflater)
+        binding = ActivityEventosBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.sv.setOnQueryTextListener(this)
 
@@ -85,9 +85,10 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
     }
 
-    private fun getRetrofit():Retrofit {
+    private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl(VariablesGlobales.url)
             .addConverterFactory(GsonConverterFactory.create())
@@ -97,16 +98,16 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
     private fun searchByName(query: String?) {
 
         CoroutineScope(Dispatchers.IO).launch {
-            val call: Response<ArrayList<Restaurantes>> = getRetrofit().create(APIService::class.java).getRestaurantes("restaurantes/$query")
-            val restaurants: ArrayList<Restaurantes>? = call.body()
+            val call: Response<ArrayList<Eventos>> = getRetrofit().create(APIService::class.java).getEventos("eventos/$query")
+            val events: ArrayList<Eventos>? = call.body()
 
             runOnUiThread {
                 if (call.isSuccessful) {
-                    if (restaurants != null) {
-                        restaurantesList = restaurants
-                        binding.txtSize.text = restaurantesList.size.toString()
+                    if (events != null) {
+                        eventosList = events
+                        binding.txtSize.text = eventosList.size.toString()
                     }
-                    adapter = RestaurantAdapter(restaurantesList)
+                    adapter = EventoAdapter(eventosList)
                     binding.rv.layoutManager = LinearLayoutManager(baseContext)
                     binding.rv.adapter = adapter
                     adapter.notifyDataSetChanged()

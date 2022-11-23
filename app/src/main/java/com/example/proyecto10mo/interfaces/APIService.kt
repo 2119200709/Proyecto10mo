@@ -1,5 +1,6 @@
 package com.example.proyecto10mo.interfaces
 
+import com.example.proyecto10mo.modelos.Eventos
 import com.example.proyecto10mo.modelos.ResponseStatus
 import com.example.proyecto10mo.modelos.Restaurantes
 import com.example.proyecto10mo.modelos.Usuarios
@@ -30,4 +31,8 @@ interface APIService {
         /**Eliminar Restaurantes**/
         @DELETE
         suspend fun eliminarRestaurant(@Url url: String): Response<ResponseStatus>
+
+        /**Eventos**/
+        @GET
+        suspend fun getEventos(@Url url: String): Response<ArrayList<Eventos>>
 }
