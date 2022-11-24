@@ -69,5 +69,23 @@ class IndexAdminActivity : AppCompatActivity() {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
+
+        binding.rest.setOnClickListener {
+            val intent = Intent(this, RestaurantesActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+
+        binding.events.setOnClickListener {
+            val intent = Intent(this, EventosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+
+        binding.users.setOnClickListener {
+            val intent = Intent(this, UsersActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
     }
 }

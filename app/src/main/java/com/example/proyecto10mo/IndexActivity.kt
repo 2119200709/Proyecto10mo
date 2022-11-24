@@ -20,11 +20,11 @@ class IndexActivity : AppCompatActivity() {
         binding = ActivityIndexBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
+        val usuario: Usuarios = intent.getSerializableExtra("usuario") as Usuarios
         /**Cabecera**/
-        binding.gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
+        binding.gUser.setText("Hola " + usuario.nombre.toString() + " " + usuario.apellido.toString())
         /**Funciones del Menu**/
-        binding.imgBtn.setOnClickListener{
+        binding.imgBtn.setOnClickListener {
             //menu.visibility = View.VISIBLE
             if (binding.menu.visibility == View.VISIBLE) {
                 binding.menu.visibility = View.INVISIBLE
@@ -33,27 +33,33 @@ class IndexActivity : AppCompatActivity() {
             }
         }
         /**Inicio**/
-        binding.inicio.setOnClickListener{
+        binding.inicio.setOnClickListener {
             val intent = Intent(this, IndexActivity::class.java)
-                intent.putExtra("usuario", usuario as Serializable)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Perfil**/
-        binding.perfil.setOnClickListener{
+        binding.perfil.setOnClickListener {
             val intent = Intent(this, PerfilActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Boletos**/
-        binding.boletos.setOnClickListener{
+        binding.boletos.setOnClickListener {
             val intent = Intent(this, BoletosActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Cerrar Sesión**/
-        binding.cerrarSesion.setOnClickListener{
+        binding.cerrarSesion.setOnClickListener {
             Toast.makeText(this, "Cerrando Sesión", Toast.LENGTH_SHORT).show()
             val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.events.setOnClickListener {
+            val intent = Intent(this, BoletosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
     }

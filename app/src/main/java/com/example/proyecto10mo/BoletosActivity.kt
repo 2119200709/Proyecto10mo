@@ -45,6 +45,7 @@ class BoletosActivity : AppCompatActivity(), OnQueryTextListener {
         VariablesGlobales.idUsuario = usuario.id.toString()
         /**Cabecera**/
         binding.gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
+        VariablesGlobales.rol = usuario.admin.toString()
 
         /**Funciones del Menu**/
         binding.imgBtn.setOnClickListener{

@@ -41,4 +41,8 @@ interface APIService {
         /**Invitaciones**/
         @GET
         suspend fun getInvitaciones(@Url url: String): Response<ArrayList<Invitaciones>>
+        /**Acceder al evento**/
+        @FormUrlEncoded
+        @PUT("ingresar")
+        suspend fun ingresar(@Field("id") id: String, @Field("codacc") codacc:String): Response<ResponseStatus>
 }

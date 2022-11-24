@@ -45,7 +45,7 @@ class EventosActivity : AppCompatActivity(), OnQueryTextListener {
         val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
         /**Cabecera**/
         binding.gUser.setText("Hola "+usuario.nombre.toString()+" "+usuario.apellido.toString())
-
+        VariablesGlobales.rol = usuario.admin.toString()
         /**Funciones del Menu**/
         binding.imgBtn.setOnClickListener{
             //menu.visibility = View.VISIBLE
