@@ -1,9 +1,6 @@
 package com.example.proyecto10mo.interfaces
 
-import com.example.proyecto10mo.modelos.Eventos
-import com.example.proyecto10mo.modelos.ResponseStatus
-import com.example.proyecto10mo.modelos.Restaurantes
-import com.example.proyecto10mo.modelos.Usuarios
+import com.example.proyecto10mo.modelos.*
 
 import retrofit2.Response
 import retrofit2.http.DELETE
@@ -20,6 +17,11 @@ interface APIService {
         @FormUrlEncoded
         @POST("login")
         suspend fun login(@Field("email") email: String, @Field("password") password: String):Response<Usuarios>
+        /**Usuarios**/
+        @GET
+        suspend fun getUsuarios(@Url url: String) : Response<ArrayList<Usuarios>>
+        @DELETE
+        suspend fun eliminarUsuario(@Url url: String): Response<ResponseStatus>
 
         /**Restaurantes**/
         @GET
@@ -35,4 +37,8 @@ interface APIService {
         /**Eventos**/
         @GET
         suspend fun getEventos(@Url url: String): Response<ArrayList<Eventos>>
+
+        /**Invitaciones**/
+        @GET
+        suspend fun getInvitaciones(@Url url: String): Response<ArrayList<Invitaciones>>
 }

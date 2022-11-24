@@ -4,19 +4,19 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.*
-import com.example.proyecto10mo.databinding.ActivityPerfilBinding
+import android.widget.Toast
+import com.example.proyecto10mo.databinding.ActivityPerfilAdminBinding
 import com.example.proyecto10mo.modelos.Usuarios
 import java.io.Serializable
 
-class PerfilActivity : AppCompatActivity() {
+class PerfilAdminActivity : AppCompatActivity() {
 
-    // Binding
-    lateinit var binding: ActivityPerfilBinding
+    // Bindig
+    lateinit var binding: ActivityPerfilAdminBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityPerfilBinding.inflate(layoutInflater)
+        binding = ActivityPerfilAdminBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         val usuario : Usuarios = intent.getSerializableExtra("usuario") as Usuarios
@@ -37,19 +37,25 @@ class PerfilActivity : AppCompatActivity() {
         }
         /**Inicio**/
         binding.inicio.setOnClickListener{
-            val intent = Intent(this, IndexActivity::class.java)
+            val intent = Intent(this, IndexAdminActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
         /**Perfil**/
         binding.perfil.setOnClickListener{
-            val intent = Intent(this, PerfilActivity::class.java)
+            val intent = Intent(this, PerfilAdminActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
-        /**Boletos**/
-        binding.boletos.setOnClickListener{
-            val intent = Intent(this, BoletosActivity::class.java)
+        /**Eventos**/
+        binding.eventos.setOnClickListener{
+            val intent = Intent(this, EventosActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+        /**Restaurantes**/
+        binding.restaurantes.setOnClickListener{
+            val intent = Intent(this, RestaurantesActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
@@ -60,4 +66,6 @@ class PerfilActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 }

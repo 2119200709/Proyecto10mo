@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo_degradado"
-    tools:context=".PerfilActivity">
+    tools:context=".UsersActivity">
     <TextView
         android:id="@+id/gUser"
         android:layout_width="match_parent"
@@ -46,7 +46,7 @@
     <FrameLayout
         android:id="@+id/menu"
         android:layout_width="150dp"
-        android:layout_height="190dp"
+        android:layout_height="260dp"
         android:layout_marginTop="80dp"
         android:background="@drawable/rounded_blue"
         android:elevation="20dp"
@@ -79,13 +79,35 @@
             android:textSize="16sp"
             android:textAllCaps="false"/>
         <Button
-            android:id="@+id/boletos"
+            android:id="@+id/restaurantes"
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center|top"
             android:layout_marginTop="80dp"
             android:background="@color/azul"
-            android:text="Mis Eventos"
+            android:text="Restaurantes"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/eventos"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="120dp"
+            android:background="@color/azul"
+            android:text="Eventos"
+            android:textColor="@color/blanco"
+            android:textSize="16sp"
+            android:textAllCaps="false"/>
+        <Button
+            android:id="@+id/usuarios"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center|top"
+            android:layout_marginTop="160dp"
+            android:background="@color/azul"
+            android:text="Usuarios"
             android:textColor="@color/blanco"
             android:textSize="16sp"
             android:textAllCaps="false"/>
@@ -94,7 +116,7 @@
             android:layout_width="150dp"
             android:layout_height="40dp"
             android:layout_gravity="center|top"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="200dp"
             android:background="@color/azul"
             android:text="Cerrar Sesión"
             android:textColor="@color/blanco"
@@ -117,56 +139,79 @@
         app:layout_constraintTop_toTopOf="parent"
         android:alpha="0.85">
         <TextView
-            android:id="@+id/gTituloPerfil"
+            android:id="@+id/gTituloLogin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal|top"
             android:layout_marginTop="20dp"
-            android:text="Mi perfil"
+            android:text="Restaurantes"
             android:textStyle="bold"
             android:textColor="@color/azul"
             android:textSize="20sp" />
-
-        <TextView
-            android:id="@+id/gInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <FrameLayout
+            android:id="@+id/modalDelete"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_gravity="center|top"
-            android:layout_marginTop="200dp"
-            android:text="Información"
-            android:textAlignment="center"
-            android:textColor="@color/azul"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/gRol"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="240dp"
-            android:text="Cliente"
-            android:textAlignment="center"
-            android:textColor="@color/dark"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-        <TextView
-            android:id="@+id/gInfo2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center|top"
-            android:layout_marginTop="280dp"
-            android:text="Información"
-            android:textAlignment="center"
-            android:textColor="@color/dark"
-            android:textSize="18sp"
-            android:textStyle="normal" />
-        <ImageView
-            android:id="@+id/imgGen"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="80dp"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_gravity="center|top"
-            app:srcCompat="@drawable/userfake" />
-    </FrameLayout>
+            android:layout_weight="80"
+            android:background="@drawable/rounded_gray"
+            android:elevation="10dp" >
+            <TextView
+                android:id="@+id/txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="30dp"
+                android:text="Usuarios Registrados"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/txtSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="55dp"
+                android:text="0"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+            <TextView
+                android:id="@+id/select"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|top"
+                android:layout_marginTop="90dp"
+                android:layout_marginHorizontal="10dp"
+                android:text="Busca un usuario de la lista para visualizar su información"
+                android:textAlignment="center"
+                android:textColor="#000"
+                android:textSize="16sp"
+                android:textStyle="normal" />
 
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/sv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintVertical_bias="0"
+                android:layout_marginTop="140dp"
+                android:layout_marginHorizontal="10dp"
+                android:background="@drawable/rounded_blue_gradient"
+                />
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="200dp"
+                android:layout_marginBottom="20dp"
+                android:layout_marginHorizontal="10dp"
+                app:layout_constraintTop_toBottomOf="@id/sv"
+                android:background="@drawable/rounded_blue_gradient"/>
+        </FrameLayout>
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

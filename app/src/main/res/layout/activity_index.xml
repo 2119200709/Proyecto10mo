@@ -64,7 +64,7 @@
             android:layout_height="40dp"
             android:layout_gravity="center|top"
             android:background="@color/azul"
-            android:text="Ir al Menú"
+            android:text="Ir al Inicio"
             android:textColor="@color/blanco"
             android:textSize="16sp"
             android:textAllCaps="false"/>
@@ -86,7 +86,7 @@
             android:layout_gravity="center|top"
             android:layout_marginTop="80dp"
             android:background="@color/azul"
-            android:text="Mis Boletos"
+            android:text="Mis Eventos"
             android:textColor="@color/blanco"
             android:textSize="16sp"
             android:textAllCaps="false"/>

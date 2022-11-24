@@ -3,12 +3,9 @@ package com.example.proyecto10mo.adapters
 import android.content.Intent
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
-import com.example.proyecto10mo.RestaurantesActivity
 import com.example.proyecto10mo.VerRestaurant
 import com.example.proyecto10mo.databinding.ItemRestaurantBinding
 import com.example.proyecto10mo.modelos.Restaurantes
-import com.example.proyecto10mo.modelos.Usuarios
-import kotlinx.android.synthetic.main.activity_restaurantes.view.*
 import java.io.Serializable
 
 class RestaurantViewHolder(view: View):RecyclerView.ViewHolder(view) {

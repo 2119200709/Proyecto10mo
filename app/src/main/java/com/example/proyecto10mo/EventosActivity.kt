@@ -63,7 +63,7 @@ class EventosActivity : AppCompatActivity(), OnQueryTextListener {
         }
         /**Perfil**/
         binding.perfil.setOnClickListener{
-            val intent = Intent(this, PerfilActivity::class.java)
+            val intent = Intent(this, PerfilAdminActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
@@ -76,6 +76,12 @@ class EventosActivity : AppCompatActivity(), OnQueryTextListener {
         /**Restaurantes**/
         binding.restaurantes.setOnClickListener{
             val intent = Intent(this, RestaurantesActivity::class.java)
+            intent.putExtra("usuario", usuario as Serializable)
+            startActivity(intent)
+        }
+        /**Usuarios**/
+        binding.usuarios.setOnClickListener{
+            val intent = Intent(this, UsersActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }
