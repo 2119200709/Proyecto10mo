@@ -57,7 +57,7 @@ class RestaurantesActivity : AppCompatActivity(), OnQueryTextListener {
         }
         /**Inicio**/
         binding.inicio.setOnClickListener{
-            val intent = Intent(this, IndexActivity::class.java)
+            val intent = Intent(this, IndexAdminActivity::class.java)
             intent.putExtra("usuario", usuario as Serializable)
             startActivity(intent)
         }

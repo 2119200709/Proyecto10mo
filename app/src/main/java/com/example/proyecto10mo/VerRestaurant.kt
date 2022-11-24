@@ -3,6 +3,8 @@ package com.example.proyecto10mo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.method.ScrollingMovementMethod
+import android.view.ScrollCaptureCallback
 import android.view.View
 import android.widget.Toast
 import com.example.proyecto10mo.databinding.ActivityVerRestaurantBinding
@@ -50,6 +52,10 @@ class VerRestaurant : AppCompatActivity() {
         binding.nombre.text = "Nombre: $restaurantNombre"
         binding.sucursal.text = "Sucursal: $restaurantSucursal"
         binding.domicilio.text = "Domicilio: $restaurantDomicilio"
+
+        binding.nombre.movementMethod = ScrollingMovementMethod()
+        binding.sucursal.movementMethod = ScrollingMovementMethod()
+        binding.domicilio.movementMethod = ScrollingMovementMethod()
 
         binding.edtNombre.setText(restaurantNombre)
         binding.edtSucursal.setText(restaurantSucursal)

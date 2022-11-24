@@ -30,7 +30,9 @@
             android:text="Restaurante"
             android:textStyle="bold"
             android:textColor="@color/azul"
-            android:textSize="20sp" />
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:scrollbars="vertical"/>
 
         <TextView
             android:id="@+id/sucursal"
@@ -41,7 +43,9 @@
             android:text="Sucursal"
             android:textStyle="normal"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:scrollbars="vertical"/>
 
         <TextView
             android:id="@+id/domicilio"
@@ -52,7 +56,9 @@
             android:text="Domicilio"
             android:textStyle="normal"
             android:textColor="@color/black"
-            android:textSize="20sp" />
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:scrollbars="vertical"/>
 
         <Button
             android:id="@+id/editar"
